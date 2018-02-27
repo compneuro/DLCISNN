@@ -35,4 +35,4 @@ Last updated on 27-February 2018
 
 ---------------------------------------------------------
 
-# Contact Email:ashavijayan@am.amrita.edu;shyam.amrita.edu
+# Contact Email:ashavijayan@am.amrita.edu;shyam@amrita.edu
