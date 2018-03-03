@@ -8,7 +8,7 @@ global wt_4_memoryconsolidated;
 
 tic
 %------------------Extracting data from excel file---------------------
-filename='ASD_ad    olescent.xlsx';
+filename='ASD_adolescent.xlsx';
 [traindata,trainout,testdata,testout]=data_preprocessing(filename);
 %----------------------------------------------------------------------
 
