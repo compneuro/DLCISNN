@@ -8,14 +8,15 @@ global wt_4_memoryconsolidated;
 
 tic
 %------------------Extracting data from excel file---------------------
-filename='ASD_adolescent.xlsx';
+filename='tennis.xlsx';
 [traindata,trainout,testdata,testout]=data_preprocessing(filename);
 %----------------------------------------------------------------------
 
 disp('----------------------Encoding------------------')
 %finding the mossy fibre spike positions(a cell array)with 7 neurons
 %spike positions for each feature 
-mf_spiketime=gauss_kernel(traindata);
+cnt_MF=input('Enter the number of MFneurons to be created for each feature: ');
+mf_spiketime=gauss_kernel(traindata,cnt_MF);
        
 %[max_size, max_index] = max(cellfun('size', mf_spiketime, 1));
 
@@ -49,7 +50,7 @@ toc
 
 tic
 disp('------------------------Testing phase------------------------')
-[pre_mtr_angle,testerr]=testpart(testout,testdata,Goc_ob,Grc_ob,PC_ob);
+[pre_mtr_angle,testerr]=testpart(testout,testdata,cnt_MF,Goc_ob,Grc_ob,PC_ob);
 toc
 
 disp('------------------------Error percent------------------------')

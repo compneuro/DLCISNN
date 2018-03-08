@@ -1,10 +1,10 @@
-function [pre_mtr_angle,err]=testpart(testdata,testout,Goc_ob,Grc_ob,PC_ob)
+function [pre_mtr_angle,err]=testpart(testdata,testout,cnt_MF,Goc_ob,Grc_ob,PC_ob)
 %Function to predict class labels from a test data
 
     global wt_4_memoryconsolidated;
     
     %Encode test data into spike trains
-    mf_spiketime=gauss_kernel(testout);
+    mf_spiketime=gauss_kernel(testout,cnt_MF);
     
     for k=1:size(testdata,1)
         Goc_time=Goc_ob.Goc_time;
