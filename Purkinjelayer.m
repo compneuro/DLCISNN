@@ -15,7 +15,7 @@ classdef Purkinjelayer
         function obj=Purkinjelayer(In,Out)%constructor setting vale of properties
             obj.NofGrc=In;
             obj.NofPC=Out;
-            obj.Grc_PC_wt=rand(In,Out);%wtgrcpc;
+            obj.Grc_PC_wt=ones(In,Out);%rand(In,Out);%wtgrcpc;
             temp=[];
             for i=1:obj.NofPC
                 temp=cat(1,temp,randperm(obj.NofGrc,obj.Grc_conn));
@@ -48,7 +48,7 @@ classdef Purkinjelayer
             wt=obj.Grc_PC_wt;
             actGrc=obj.act_Grc;
             for i=1:size(e1,2)
-                lr=1.23;
+                lr=0.35;
                 for j=1:size(actGrc,2)
                     Grc=actGrc(i,j);
                     wt(Grc,i)=wt(Grc,i)-(lr.*e1.*wt(Grc,i));

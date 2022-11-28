@@ -1,8 +1,5 @@
 function mf_spiketime=gauss_kernel(inp_for_sys,cnt_MF)
     %encoding via gaussian convulution kernel
-   
-
-    %Normalising the features
     inp_for_sys=minmax(inp_for_sys,255,20);
     x=-360:0.1:360;
     mf_spiketime=cell(size(inp_for_sys,1),1);
@@ -54,7 +51,7 @@ function mf_spiketime=gauss_kernel(inp_for_sys,cnt_MF)
             spike_positions{i}=temp;
         end
         %plot mf spikes
-        raster(spike_positions);
+        %raster(spike_positions);
         mf_spiketime{loop_j}=spiktime2matrix(spike_positions);  
     end
 

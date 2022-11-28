@@ -19,9 +19,9 @@ function [VV,pC]= EulerPC(PC_output)
             gc=gc+PC_output(i);
         end
         I=gc*(V(i)-0);
-        V(i+1)=V(i)+dt*(feval('VoltagePC',V(i),w(i),I));
-        w(i+1)=w(i)+dt*(feval('AdCurrentPC',V(i),w(i)));
-        gc=gc+dt*(feval('synaptic_conductance',gc));
+        V(i+1)=V(i)+dt*(VoltagePC(V(i),w(i),I));
+        w(i+1)=w(i)+dt*(AdCurrentPC(V(i),w(i)));
+        gc=gc+dt*(synaptic_conductance(gc));
         
         if V(i+1) > 30
             VV(end+1)=30;

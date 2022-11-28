@@ -1,13 +1,14 @@
 function [Grc_ob,PC_ob,PC_time,Goc_ob]=create_network(timeser,PC_count,f,e1,Goc_ob,Grc_ob,PC_ob)
 
     global tot_wt;
-%     global Grc_sparseind_b4
-%     global Grc_sparseind_after
-%     global it
+    global Grc_sparseind_b4
+    global Grc_sparseind_after
+    global it
     
     %-----------Initial network creation------------%
     if(f==0)
         MF_count=size(timeser,1);
+        
         Goc_ob=Golgicells(MF_count,1);
         [Goc_VV,Grc_input,Goc_time]=Goc_ob.Goc2Grcinput(timeser);
         Goc_ob.Grc_input=Grc_input;
@@ -25,12 +26,13 @@ function [Grc_ob,PC_ob,PC_time,Goc_ob]=create_network(timeser,PC_count,f,e1,Goc_
         mf_grc_wt=Grc_ob.Mf_Grc_wt_update(e1);
         Grc_ob.MF_Grc_wt=mf_grc_wt;
         Goc_time=Goc_ob.Goc_time;
-%         if(it==50)
-%              Grc_sparseind_after=Grc_ob.MF_Grc_121(timeser);
-%         end
+        if(it==50)
+             Grc_sparseind_after=Grc_ob.MF_Grc_121(timeser);
+        end
     end
     %--------------------------------------------------%
     
+    Goc_time=Goc_ob.Goc_time;
     [Grc_VV,PC_input,Grc_time]=Grc_ob.Grc2PCinput(timeser,Goc_time);
     Grc_ob.PC_input=PC_input;
     Grc_ob.Grc_VV=Grc_VV;
