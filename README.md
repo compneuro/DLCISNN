@@ -9,6 +9,8 @@ Amrita Vishwa Vidyapeetham, Kollam, Kerala, India.
 http://www.amrita.edu/center/mind-brain/
 Last updated on 28-November 2022
 
+Citation: Vijayan A and Diwakar S. A Cerebellum Inspired Spiking Neural Network as a Multi-model for Pattern Classification and Robotic Trajectory Prediction Front.Neurosci. Sec. Neural Technology https://www.frontiersin.org/articles/10.3389/fnins.2022.909146/full
+
 ---------------------------------------------------------
 
 # Required software and Instructions
