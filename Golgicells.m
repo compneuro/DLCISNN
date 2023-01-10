@@ -11,9 +11,9 @@ classdef Golgicells
     methods
         
         function obj=Golgicells(In,Out)%constructor setting vale of properties
-            obj.NofGoc=Out;   %1 MF can give to 53 GrC and each GrC can get 4 MF connections  
+            obj.NofGoc=Out;   % #GoC 
             obj.NofMo=In;     % Number of mossyfibre
-            obj.MF_Goc_wt=rand(obj.NofMo,obj.NofGoc);    %MF_Grc synapse eg 21*279 wtmfgrc;randi(10,1,1)*
+            obj.MF_Goc_wt=rand(obj.NofMo,obj.NofGoc);    %MF_Goc synapse eg 21*279 wtmfgrc;randi(10,1,1)*
         end
         
         function [Goc_VV,Grc_input,Goc_time]=Goc2Grcinput(obj,I_curr)

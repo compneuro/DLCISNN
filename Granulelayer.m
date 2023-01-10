@@ -20,8 +20,8 @@ classdef Granulelayer
             obj.NofMo=In;           % Number of mossyfibre
             obj.NofGoc=Goc;
 
-            obj.MF_Grc_wt=randi([1 10],obj.NofMo,obj.NofGrc);    %MF_Grc synaptic weight
-            obj.Goc_Grc_wt=rand(obj.NofGoc,obj.NofGrc); 
+            obj.MF_Grc_wt=8*ones(obj.NofMo,obj.NofGrc);%randi([1 10],obj.NofMo,obj.NofGrc);    %MF_Grc synaptic weight
+            obj.Goc_Grc_wt=0.1*rand(obj.NofGoc,obj.NofGrc); 
             temp=[];
             for i=1:obj.NofGrc
                 temp=cat(1,temp,randperm(obj.NofMo,obj.MF_conn));
@@ -38,10 +38,12 @@ classdef Granulelayer
                 
                 for j=1:obj.MF_conn
                     MF=obj.act_MF(i,j);
-                    Inp_Grc=cat(2,Inp_Grc,I_curr(MF,find(I_curr(MF,:))));
-                    wt_Grc=cat(2,wt_Grc,obj.MF_Grc_wt(MF,i));
-                    if(size(Inp_Grc,2)~=size(wt_Grc,2))
-                        wt_Grc(1,end+1:size(Inp_Grc,2))=wt_Grc(1,end);
+                    if(isempty(I_curr)==0)
+                        Inp_Grc=cat(2,Inp_Grc,I_curr(MF,find(I_curr(MF,:))));
+                        wt_Grc=cat(2,wt_Grc,obj.MF_Grc_wt(MF,i));
+                        if(size(Inp_Grc,2)~=size(wt_Grc,2))
+                            wt_Grc(1,end+1:size(Inp_Grc,2))=wt_Grc(1,end);
+                        end
                     end
 
                 end
@@ -54,8 +56,10 @@ classdef Granulelayer
                 end                
                 [sorted_Inp_Grc,I]=sort(Inp_Grc,2);
                 wt_Grc=wt_Grc(I);
+                sorted_Inp_Grc;
                 Inp_Grc_time{i}=sorted_Inp_Grc;     %for storing pre synaptic input for all Grc
                 wt_mf_grc{i}=wt_Grc;                       %for storing pre synaptic weights for all Grc
+                
                 [Grc_VV(i,:),PC_input(i,:),temp]=EulerGrC(Inp_Grc_time{i},wt_mf_grc{i});   
                 try
                     Grc_time(i,1:size(temp,2))=temp;
@@ -73,8 +77,8 @@ classdef Granulelayer
             for i=1:size(act_MF,1)
                 for j=1:size(act_MF,2)
                     MF=act_MF(i,j);
-                    lr=0.23;
-                    wt(MF,i)=wt(MF,i)-(lr.*e2.*wt(MF,i));
+                    lr=0.10;
+                    wt(MF,i)=wt(MF,i)+(lr.*e2.*wt(MF,i));
                 end
              end
         end

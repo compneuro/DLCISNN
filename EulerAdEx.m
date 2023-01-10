@@ -1,6 +1,6 @@
 function [mfspike]= EulerAdEx(I)
     % To generate mossyfiber patterns 
-    dt=.025;
+    dt=1;
     x=0:dt:300;
     
     V=[];
